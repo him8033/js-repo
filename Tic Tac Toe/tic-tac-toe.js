@@ -1,3 +1,4 @@
+let gameArea=document.querySelector(".game-area");
 let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector("#reset-btn");
 let newBtn = document.querySelector("#new-btn");
@@ -15,6 +16,8 @@ const winPattern = [
     [3, 4, 5],
     [6, 7, 8]
 ];
+
+msgArea.classList.remove("hide-msg");
 
 boxes.forEach(box => {
     box.addEventListener("click", () => {
@@ -46,7 +49,8 @@ const checkWinner = () => {
 
 const showWinner = (winner) => {
     msg.innerText = (`Congratulation ${winner} is Winner \nClick Here! to Start a\n New Game`);
-    msgArea.classList.remove("hide");
+    msgArea.classList.remove("hide-msg");
+    gameArea.classList.add("game-area");
     boxesDisabled();
 }
 
@@ -66,7 +70,8 @@ const boxesEnabled = () => {
 const resetGame = () => {
     turn = true;
     boxesEnabled();
-    msgArea.classList.add("hide");
+    msgArea.classList.add("hide-msg");
+    gameArea.classList.remove("game-area");
 }
 resetBtn.addEventListener("click", resetGame);
 newBtn.addEventListener("click", resetGame);
