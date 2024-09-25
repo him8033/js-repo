@@ -50,7 +50,12 @@ h1 {
 }
 
 .msg-area {
-    height: 10vmin;
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
 }
 
 #msg {
