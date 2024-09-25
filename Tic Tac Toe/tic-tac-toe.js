@@ -1,4 +1,4 @@
-let gameArea=document.querySelector(".game-area");
+let gameArea = document.querySelector(".game-area");
 let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector("#reset-btn");
 let newBtn = document.querySelector("#new-btn");
@@ -18,9 +18,10 @@ const winPattern = [
 ];
 
 msgArea.classList.remove("hide-msg");
-
+let count = 0;
 boxes.forEach(box => {
     box.addEventListener("click", () => {
+        count++;
         if (turn === true) {
             box.innerText = "X";
             turn = false;
@@ -31,6 +32,11 @@ boxes.forEach(box => {
         }
         box.disabled = true;
         checkWinner();
+        if (count == 9) {
+            msg.innerText = ("Match Draw");
+            msgArea.classList.remove("hide-msg");
+            gameArea.classList.add("game-area");
+        }
     })
 });
 
@@ -42,6 +48,7 @@ const checkWinner = () => {
         if (pos1 != "") {
             if (pos1 === pos2 && pos2 === pos3) {
                 showWinner(pos1);
+                count = 0;
             }
         }
     }
@@ -70,6 +77,7 @@ const boxesEnabled = () => {
 const resetGame = () => {
     turn = true;
     boxesEnabled();
+    count = 0;
     msgArea.classList.add("hide-msg");
     gameArea.classList.remove("game-area");
 }
