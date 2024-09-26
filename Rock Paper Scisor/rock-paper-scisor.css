@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:cornflowerblue;
+    text-align: center;
+}
+.title{
+    font-size: 10vmin;
+    height: 15vmin;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-area{
+    display: flex;
+    justify-content: center;
+    padding: 5vmin;
+    gap: 5vmin;
+}
+.box{
+    height: 35vmin;
+    width: 35vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+img{
+    height: 30vmin;
+    width: 30vmin;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.box:hover{
+    cursor: pointer;
+    background-color: dimgrey;
+}
