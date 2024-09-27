@@ -38,3 +38,24 @@ img{
     cursor: pointer;
     background-color: dimgrey;
 }
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vmin;
+    font-size: 5vmin;
+}
+#user-score,#com-score{
+    font-size: 10vmin;
+}
+.msg-area{
+    margin-top: 10vmin;
+}
+#msg{
+    background-color: brown;
+    color: white;
+    display: inline;
+    font-size: 5vmin;
+    padding: 2vmin;
+    border-radius: 2vmin;
+}
