@@ -1,12 +1,14 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
-    background-color:cornflowerblue;
+
+body {
+    background-color: cornflowerblue;
     text-align: center;
 }
-.title{
+
+.title {
     font-size: 10vmin;
     height: 15vmin;
     background-color: brown;
@@ -14,13 +16,15 @@ body{
     justify-content: center;
     align-items: center;
 }
-.box-area{
+
+.box-area {
     display: flex;
     justify-content: center;
     padding: 5vmin;
     gap: 5vmin;
 }
-.box{
+
+.box {
     height: 35vmin;
     width: 35vmin;
     display: flex;
@@ -28,30 +32,38 @@ body{
     align-items: center;
     border-radius: 50%;
 }
-img{
+
+img {
     height: 30vmin;
     width: 30vmin;
     object-fit: cover;
     border-radius: 50%;
 }
-.box:hover{
+
+.box:hover {
     cursor: pointer;
     background-color: dimgrey;
 }
-.result{
+
+.result {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15vmin;
     font-size: 5vmin;
 }
-#user-score,#com-score,#draw-score{
+
+#user-score,
+#com-score,
+#draw-score {
     font-size: 10vmin;
 }
-.msg-area{
+
+.msg-area {
     margin-top: 10vmin;
 }
-#msg{
+
+#msg {
     background-color: brown;
     color: white;
     display: inline;
