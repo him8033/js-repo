@@ -42,10 +42,10 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vmin;
+    gap: 15vmin;
     font-size: 5vmin;
 }
-#user-score,#com-score{
+#user-score,#com-score,#draw-score{
     font-size: 10vmin;
 }
 .msg-area{
