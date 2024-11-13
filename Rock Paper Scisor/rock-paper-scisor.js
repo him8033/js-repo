@@ -28,7 +28,7 @@ const playGame = (userChoice) => {
         } else {
             userWin = comChoice === "paper" ? true : false;
         }
-        showWinner(userWin);
+        showWinner(userWin,userChoice,comChoice);
     }
 }
 
@@ -42,19 +42,19 @@ const drawGame = () => {
     drawScore++;
     drawScorePara.innerText = drawScore;
     msg.innerText = "Match was Draw. Play Again!"
-    msg.style.backgroundColor = "grey";
+    msg.style.backgroundColor = "#de55d9";
 }
 
-const showWinner = (userWin) => {
+const showWinner = (userWin,userChoice,comChoice) => {
     if (userWin === true) {
         userScore++;
         userScorePara.innerText = userScore;
-        msg.innerText = "You Win!";
+        msg.innerText = `You Win,  Your ' ${userChoice.toUpperCase()} ' defeates ' ${comChoice.toUpperCase()} '`;
         msg.style.backgroundColor = "Green";
     } else {
         comScore++;
         comScorePara.innerText = comScore;
-        msg.innerText = "You Lose.";
+        msg.innerText = `You Lose,  ' ${comChoice.toUpperCase()} ' defeates Your ' ${userChoice.toUpperCase()} '`;
         msg.style.backgroundColor = "Red";
     }
 }
