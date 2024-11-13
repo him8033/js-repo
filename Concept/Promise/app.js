@@ -1,58 +1,132 @@
 let h1 = document.querySelector("h1");
 
-function saveToDb(data, success, failure) {
-    let netSpeed = Math.floor(Math.random() * 10) + 1;
-    if (netSpeed > 4) {
-        success(data);
-    } else {
-        failure(data);
-    }
+// function saveToDb(data, success, failure) {
+//     let netSpeed = Math.floor(Math.random() * 10) + 1;
+//     if (netSpeed > 4) {
+//         success(data);
+//     } else {
+//         failure(data);
+//     }
+// }
+
+// saveToDb("first",
+//     (data) => {
+//         console.log(`Success1: Your data was saved= ${data}`);
+//         let test = h1.innerHTML;
+//         h1.innerHTML = `${test}<br> Success1: Your data was saved= ${data}`;
+
+//         saveToDb("Second",
+//             (data) => {
+//                 console.log(`Success2: Your data was saved= ${data}`);
+//                 let test = h1.innerHTML;
+//                 h1.innerHTML = `${test}<br> Success2: Your data was saved= ${data}`;
+
+//                 saveToDb("third",
+//                     (data) => {
+//                         console.log(`Success3: Your data was saved= ${data}`);
+//                         let test = h1.innerHTML;
+//                         h1.innerHTML = `${test}<br> Success3: Your data was saved= ${data}`;
+
+//                         saveToDb("foruth",
+//                             (data) => {
+//                                 console.log(`Success4: Your data was saved= ${data}`);
+//                                 let test = h1.innerHTML;
+//                                 h1.innerHTML = `${test}<br> Success4: Your data was saved= ${data}`;
+//                             },
+//                             (data) => {
+//                                 console.log(`Failure4: Network Connection Error= ${data}`);
+//                                 let test = h1.innerHTML;
+//                                 h1.innerHTML = `${test}<br> Failure4: Network Connection Error= ${data}`;
+//                             });
+//                     },
+//                     (data) => {
+//                         console.log(`Failure3: Network Connection Error= ${data}`);
+//                         let test = h1.innerHTML;
+//                         h1.innerHTML = `${test}<br> Failure3: Network Connection Error= ${data}`;
+//                     });
+//             },
+//             (data) => {
+//                 console.log(`Failure2: Network Connection Error= ${data}`);
+//                 let test = h1.innerHTML;
+//                 h1.innerHTML = `${test}<br> Failure2: Network Connection Error= ${data}`;
+//             });
+//     },
+//     (data) => {
+//         console.log(`Failure1: Network Connection Error= ${data}`);
+//         let test = h1.innerHTML;
+//         h1.innerHTML = `${test}<br> Failure1: Network Connection Error= ${data}`;
+//     });
+
+
+
+//                      After Promise function 
+
+
+function saveToDb(data) {
+    return new Promise((resolve, reject) => {
+        let netSpeed = Math.floor(Math.random() * 10) + 1;
+        if (netSpeed > 4) {
+            resolve(`Success: data was saved = ${data}`);
+        } else {
+            reject(`Failure: weak Connection`);
+        }
+    })
 }
 
-saveToDb("first",
-    (data) => {
-        console.log(`Success1: Your data was saved= ${data}`);
+//                  Syntax-------- of promise then() and catch()
+// saveToDb("first")
+//     .then(() => {
+//         console.log(`Promise1 was resolved`);
+//     })
+//     .catch(() => {
+//         console.log(`Promise1 was rejected`);
+//     })
+
+
+saveToDb("first")
+    .then(() => {
+        console.log(`Promise1 was resolved`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Success1: Your data was saved= ${data}`;
+        h1.innerHTML = `${test}<br> Promise1 was resolved`;
 
-        saveToDb("Second",
-            (data) => {
-                console.log(`Success2: Your data was saved= ${data}`);
+        saveToDb("second")
+            .then(() => {
+                console.log(`Promise2 was resolved`);
                 let test = h1.innerHTML;
-                h1.innerHTML = `${test}<br> Success2: Your data was saved= ${data}`;
+                h1.innerHTML = `${test}<br> Promise2 was resolved`;
 
-                saveToDb("third",
-                    (data) => {
-                        console.log(`Success3: Your data was saved= ${data}`);
+                saveToDb("third")
+                    .then(() => {
+                        console.log(`Promise3 was resolved`);
                         let test = h1.innerHTML;
-                        h1.innerHTML = `${test}<br> Success3: Your data was saved= ${data}`;
+                        h1.innerHTML = `${test}<br> Promise3 was resolved`;
 
-                        saveToDb("foruth",
-                            (data) => {
-                                console.log(`Success4: Your data was saved= ${data}`);
+                        saveToDb("fourth")
+                            .then(() => {
+                                console.log(`Promise4 was resolved`);
                                 let test = h1.innerHTML;
-                                h1.innerHTML = `${test}<br> Success4: Your data was saved= ${data}`;
-                            },
-                            (data) => {
-                                console.log(`Failure4: Network Connection Error= ${data}`);
+                                h1.innerHTML = `${test}<br> Promise4 was resolved`;
+                            })
+                            .catch(() => {
+                                console.log(`Promise4 was rejected`);
                                 let test = h1.innerHTML;
-                                h1.innerHTML = `${test}<br> Failure4: Network Connection Error= ${data}`;
-                            });
-                    },
-                    (data) => {
-                        console.log(`Failure3: Network Connection Error= ${data}`);
+                                h1.innerHTML = `${test}<br> Promise4 was rejected`;
+                            })
+                    })
+                    .catch(() => {
+                        console.log(`Promise3 was rejected`);
                         let test = h1.innerHTML;
-                        h1.innerHTML = `${test}<br> Failure3: Network Connection Error= ${data}`;
-                    });
-            },
-            (data) => {
-                console.log(`Failure2: Network Connection Error= ${data}`);
+                        h1.innerHTML = `${test}<br> Promise3 was rejected`;
+                    })
+            })
+            .catch(() => {
+                console.log(`Promise2 was rejected`);
                 let test = h1.innerHTML;
-                h1.innerHTML = `${test}<br> Failure2: Network Connection Error= ${data}`;
-            });
-    },
-    (data) => {
-        console.log(`Failure1: Network Connection Error= ${data}`);
+                h1.innerHTML = `${test}<br> Promise2 was rejected`;
+            })
+    })
+    .catch(() => {
+        console.log(`Promise1 was rejected`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Failure1: Network Connection Error= ${data}`;
-    });
+        h1.innerHTML = `${test}<br> Promise1 was rejected`;
+    })
