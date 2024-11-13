@@ -66,9 +66,9 @@ function saveToDb(data) {
     return new Promise((resolve, reject) => {
         let netSpeed = Math.floor(Math.random() * 10) + 1;
         if (netSpeed > 4) {
-            resolve(`Success: data was saved = ${data}`);
+            resolve(`Success: "${data}" was saved`);
         } else {
-            reject(`Failure: weak Connection`);
+            reject(`Failure: weak Connection "${data}" was not saved`);
         }
     })
 }
@@ -86,31 +86,31 @@ function saveToDb(data) {
 //                  Promise Chaining 
 
 saveToDb("first")
-    .then(() => {
+    .then((result) => {
         console.log(`Promise1 was resolved`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise1 was resolved`;
+        h1.innerHTML = `${test}<br> Promise1 was resolved and result is = ${result}`;
         return saveToDb("second")
     })
-    .then(() => {
+    .then((result) => {
         console.log(`Promise2 was resolved`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise2 was resolved`;
+        h1.innerHTML = `${test}<br> Promise2 was resolved and result is = ${result}`;
         return saveToDb("third")
     })
-    .then(() => {
+    .then((result) => {
         console.log(`Promise3 was resolved`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise3 was resolved`;
+        h1.innerHTML = `${test}<br> Promise3 was resolved and result is = ${result}`;
         return saveToDb("fourth")
     })
-    .then(() => {
+    .then((result) => {
         console.log(`Promise4 was resolved`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise4 was resolved`;
+        h1.innerHTML = `${test}<br> Promise4 was resolved and result is = ${result}`;
     })
-    .catch(() => {
+    .catch((error) => {
         console.log(`Promise was rejected`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise was rejected`;
+        h1.innerHTML = `${test}<br> Promise was rejected and result is = ${error}`;
     })
