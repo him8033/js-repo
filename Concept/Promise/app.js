@@ -83,50 +83,34 @@ function saveToDb(data) {
 //     })
 
 
+//                  Promise Chaining 
+
 saveToDb("first")
     .then(() => {
         console.log(`Promise1 was resolved`);
         let test = h1.innerHTML;
         h1.innerHTML = `${test}<br> Promise1 was resolved`;
-
-        saveToDb("second")
-            .then(() => {
-                console.log(`Promise2 was resolved`);
-                let test = h1.innerHTML;
-                h1.innerHTML = `${test}<br> Promise2 was resolved`;
-
-                saveToDb("third")
-                    .then(() => {
-                        console.log(`Promise3 was resolved`);
-                        let test = h1.innerHTML;
-                        h1.innerHTML = `${test}<br> Promise3 was resolved`;
-
-                        saveToDb("fourth")
-                            .then(() => {
-                                console.log(`Promise4 was resolved`);
-                                let test = h1.innerHTML;
-                                h1.innerHTML = `${test}<br> Promise4 was resolved`;
-                            })
-                            .catch(() => {
-                                console.log(`Promise4 was rejected`);
-                                let test = h1.innerHTML;
-                                h1.innerHTML = `${test}<br> Promise4 was rejected`;
-                            })
-                    })
-                    .catch(() => {
-                        console.log(`Promise3 was rejected`);
-                        let test = h1.innerHTML;
-                        h1.innerHTML = `${test}<br> Promise3 was rejected`;
-                    })
-            })
-            .catch(() => {
-                console.log(`Promise2 was rejected`);
-                let test = h1.innerHTML;
-                h1.innerHTML = `${test}<br> Promise2 was rejected`;
-            })
+        return saveToDb("second")
+    })
+    .then(() => {
+        console.log(`Promise2 was resolved`);
+        let test = h1.innerHTML;
+        h1.innerHTML = `${test}<br> Promise2 was resolved`;
+        return saveToDb("third")
+    })
+    .then(() => {
+        console.log(`Promise3 was resolved`);
+        let test = h1.innerHTML;
+        h1.innerHTML = `${test}<br> Promise3 was resolved`;
+        return saveToDb("fourth")
+    })
+    .then(() => {
+        console.log(`Promise4 was resolved`);
+        let test = h1.innerHTML;
+        h1.innerHTML = `${test}<br> Promise4 was resolved`;
     })
     .catch(() => {
-        console.log(`Promise1 was rejected`);
+        console.log(`Promise was rejected`);
         let test = h1.innerHTML;
-        h1.innerHTML = `${test}<br> Promise1 was rejected`;
+        h1.innerHTML = `${test}<br> Promise was rejected`;
     })
